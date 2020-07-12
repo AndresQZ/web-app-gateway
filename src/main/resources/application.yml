@@ -1,0 +1,4 @@
+app:
+  httpUri: http://httpbin.org:80
+  name: web-app
+  
