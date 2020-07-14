@@ -20,17 +20,16 @@ public class Application {
 	}
 
 	  
-	@Bean
-	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
-		return builder.routes()
-		        .route(p -> p
-		            .path("/get")
-		            .filters(f -> f.addRequestHeader("Hello", "World"))
-		            .uri(globalCofigurationProperties.getHttpUri()))
-		        .route(p -> p
-		                .host("*.hystrix.com")
-		                .filters(f -> f.hystrix(config -> config.setName("mycmd").setFallbackUri("forward:/fallback")))
-		                .uri(globalCofigurationProperties.getHttpUri()))
-		        .build();
-	}
+	/*
+	 * @Bean public RouteLocator myRoutes(RouteLocatorBuilder builder) { return
+	 * builder.routes() .route(p -> p .path("/get") .filters(f ->
+	 * f.addRequestHeader("Hello", "World"))
+	 * .uri(globalCofigurationProperties.getHttpUri()) .id("myRoute")) .route(p -> p
+	 * .host("*.hystrix.com") .filters(f -> f.hystrix(config ->
+	 * config.setName("mycmd").setFallbackUri("forward:/fallback")))
+	 * .uri(globalCofigurationProperties.getHttpUri())) .route(p -> p
+	 * .path("/user/*") .filters(f -> f.addRequestHeader("tsec", "7722hdhh"))
+	 * .uri(globalCofigurationProperties.getPathWebTaxco())) .build(); }
+	 */
+	
 }
