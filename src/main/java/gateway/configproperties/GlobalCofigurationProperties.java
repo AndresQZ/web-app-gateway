@@ -11,6 +11,7 @@ public class GlobalCofigurationProperties {
 	private String host;
 	private String name;
 	private String httpUri;
+	private String pathWebTaxco;
 	public String getHost() {
 		return host;
 	}
@@ -30,7 +31,12 @@ public class GlobalCofigurationProperties {
 		this.httpUri = httpUri;
 	}
 	
-	
+	public String getPathWebTaxco() {
+		return pathWebTaxco;
+	}
+	public void setPathWebTaxco(String pathWebTaxco) {
+		this.pathWebTaxco = pathWebTaxco;
+	}
 	public GlobalCofigurationProperties() {
 		System.out.println(" >>>>>>>>inside constructor GlobalCofigurationProperties");
 		System.out.println(String.format("property: %s", this.host));
