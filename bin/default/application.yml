@@ -1,0 +1,20 @@
+app:
+  httpUri: http://httpbin.org:80
+  name: web-app
+  pathWebTaxco: http://localhost:8090/
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: web
+        uri: http://baeldung.com
+        predicates: 
+        - Path=/foo/{segment}
+      - id: web-taxco-app
+        uri: http://localhost:8090/
+        predicates: 
+        - Path=/user/*
+      - id: otros
+        predicates: 
+        - Path=/delay/{segment}
+        uri: http://httpbin.org:80
