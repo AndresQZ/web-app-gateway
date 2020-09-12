@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 8099
 app:
   httpUri: http://httpbin.org:80
   name: web-app
@@ -13,7 +13,7 @@ spring:
         predicates: 
         - Path=/foo/{segment}
       - id: web-taxco-app
-        uri: http://localhost:8090/
+        uri: http://webTaxcoApp:8090/
         predicates: 
         - Path=/article/v0/*
       - id: otros
@@ -23,4 +23,5 @@ spring:
       - id: web-authentication
         uri: http://localhost:8080
         predicates:
-        - Path=/authetication/v0
+        - Path=/authetication/v       
+      

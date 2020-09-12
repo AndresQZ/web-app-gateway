@@ -1,3 +1,11 @@
 .git
 .gradle
 build/
+.classpath
+.project
+.settings/org.eclipse.buildship.core.prefs
+.settings/org.springframework.ide.eclipse.prefs
+bin/main/gateway/configproperties/GlobalCofigurationProperties.class
+bin/main/application.yml
+bin/main/log4j2.properties
+bin/main/gateway/fallback/Fallback.class
