@@ -21,7 +21,16 @@ spring:
         - Path=/delay/{segment}
         uri: http://httpbin.org:80
       - id: web-authentication
-        uri: http://localhost:8080
+        uri: http://webAuthentication:8091
+        filters:
+         - AddRequestParameter=tsec, XXXWWWYYY
+         - AddResponseHeader=postFilter, spring_gateway
+         - AddResponseHeader=spring-gateway, gateway
         predicates:
-        - Path=/authetication/v       
-      
+        - Path=/authetication/v0
+      - id: managment
+        uri: http://webTaxcoApp:8090
+        filters:
+         - AddResponseHeader=spring-gateway, gateway
+        predicates:
+        - Path=/management/*
