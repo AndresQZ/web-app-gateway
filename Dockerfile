@@ -1,7 +1,10 @@
 FROM gradle:6.5.1-jdk as builder
-COPY --chown=gradle:gradle . /home/gradle/src
+RUN mkdir -p /home/gradle/src
+COPY --chown=gradle:gradle build.gradle /home/gradle/src
 WORKDIR /home/gradle/src
-RUN gradle build
+RUN gradle clean build --no-daemon > /dev/null 2>&1 || true
+COPY --chown=gradle:gradle . /home/gradle/src
+RUN gradle build --no-daemon --stacktrace
 RUN mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*.jar)
 
 FROM openjdk:8-jdk-alpine
