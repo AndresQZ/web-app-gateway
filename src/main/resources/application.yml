@@ -32,5 +32,15 @@ spring:
         uri: http://webTaxcoApp:8090
         filters:
          - AddResponseHeader=spring-gateway, gateway
+         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
         predicates:
         - Path=/management/*
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - OPTIONS
