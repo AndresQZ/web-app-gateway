@@ -7,6 +7,8 @@ app:
 spring:
   cloud:
     gateway:
+      default-filters:
+      - DedupeResponseHeader=Access-Control-Allow-Origin, RETAIN_UNIQUE
       routes:
       - id: web
         uri: http://baeldung.com
@@ -32,7 +34,6 @@ spring:
         uri: http://webTaxcoApp:8090
         filters:
          - AddResponseHeader=spring-gateway, gateway
-         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
         predicates:
         - Path=/management/*
       globalcors:
