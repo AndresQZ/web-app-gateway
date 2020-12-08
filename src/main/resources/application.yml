@@ -18,6 +18,18 @@ spring:
         uri: http://webTaxcoApp:8090/
         predicates: 
         - Path=/article/v0/*
+      - id: web-taxco-app2
+        uri: http://webTaxcoApp:8090/
+        predicates: 
+        - Path=/bracelet/v0/**
+      - id: web-taxco-app3
+        uri: http://webTaxcoApp:8090/
+        predicates: 
+        - Path=/chain/v0/**
+      - id: web-taxco-app4
+        uri: http://webTaxcoApp:8090/
+        predicates: 
+        - Path=/order/v0/**
       - id: otros
         predicates: 
         - Path=/delay/{segment}
@@ -29,7 +41,7 @@ spring:
          - AddResponseHeader=postFilter, spring_gateway
          - AddResponseHeader=spring-gateway, gateway
         predicates:
-        - Path=/authetication/v0
+        - Path=/authetication/v0/**
       - id: managment
         uri: http://webTaxcoApp:8090
         filters:
@@ -45,3 +57,7 @@ spring:
               - GET
               - POST
               - OPTIONS
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.cloud.context.config: debug
