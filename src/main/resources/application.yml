@@ -26,6 +26,10 @@ spring:
         uri: http://webTaxcoApp:8090/
         predicates: 
         - Path=/chain/v0/**
+      - id: web-taxco-app3
+        uri: http://webTaxcoApp:8090/
+        predicates: 
+        - Path=/rings/v0/**
       - id: web-taxco-app4
         uri: http://webTaxcoApp:8090/
         predicates: 
