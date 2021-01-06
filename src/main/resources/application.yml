@@ -51,7 +51,7 @@ spring:
         filters:
          - AddResponseHeader=spring-gateway, gateway
         predicates:
-        - Path=/management/*
+        - Path=/management/**
       globalcors:
         cors-configurations:
           '[/**]':
