@@ -7,6 +7,8 @@ app:
 spring:
   cloud:
     gateway:
+      default-filters:
+      - DedupeResponseHeader=Access-Control-Allow-Origin, RETAIN_UNIQUE
       routes:
       - id: web
         uri: http://baeldung.com
@@ -16,6 +18,26 @@ spring:
         uri: http://webTaxcoApp:8090/
         predicates: 
         - Path=/article/v0/*
+      - id: web-taxco-app2
+        uri: http://webTaxcoApp:8090/
+        predicates: 
+        - Path=/bracelet/v0/**
+      - id: web-taxco-app3
+        uri: http://webTaxcoApp:8090/
+        predicates: 
+        - Path=/chain/v0/**
+      - id: web-taxco-app3
+        uri: http://webTaxcoApp:8090/
+        predicates: 
+        - Path=/rings/v0/**
+      - id: web-taxco-app3
+        uri: http://webTaxcoApp:8090/
+        predicates: 
+        - Path=/earring/v0/**
+      - id: web-taxco-app4
+        uri: http://webTaxcoApp:8090/
+        predicates: 
+        - Path=/order/v0/**
       - id: otros
         predicates: 
         - Path=/delay/{segment}
@@ -27,10 +49,23 @@ spring:
          - AddResponseHeader=postFilter, spring_gateway
          - AddResponseHeader=spring-gateway, gateway
         predicates:
-        - Path=/authetication/v0
+        - Path=/authetication/v0/**
       - id: managment
         uri: http://webTaxcoApp:8090
         filters:
          - AddResponseHeader=spring-gateway, gateway
         predicates:
-        - Path=/management/*
+        - Path=/management/**
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - OPTIONS
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.cloud.context.config: debug
