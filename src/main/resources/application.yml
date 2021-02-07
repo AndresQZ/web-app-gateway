@@ -4,7 +4,14 @@ app:
   httpUri: http://httpbin.org:80
   name: web-app
   pathWebTaxco: http://localhost:8090/
+eureka:
+  client:
+    service-url:
+      default-zone: http://webTaxcoEureka:8761/eureka
+    healthcheck: 
+      enabled: true
 spring:
+  application:    name: webGateway
   cloud:
     gateway:
       default-filters:
@@ -15,27 +22,33 @@ spring:
         predicates: 
         - Path=/foo/{segment}
       - id: web-taxco-app
-        uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
+        #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
+        uri: http://webTaxcoApp
         predicates: 
         - Path=/article/v0/*
       - id: web-taxco-app2
-        uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
+        #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
+        uri: http://webTaxcoApp
         predicates: 
         - Path=/bracelet/v0/**
       - id: web-taxco-app3
-        uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
+        #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
+        uri: http://webTaxcoApp
         predicates: 
         - Path=/chain/v0/**
       - id: web-taxco-app3
-        uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
+        #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
+        uri: http://webTaxcoApp
         predicates: 
         - Path=/rings/v0/**
       - id: web-taxco-app3
-        uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
+        #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
+        uri: http://webTaxcoApp
         predicates: 
         - Path=/earring/v0/**
       - id: web-taxco-app4
-        uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
+        #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
+        uri: http://webTaxcoApp
         predicates: 
         - Path=/order/v0/**
       - id: otros
@@ -43,7 +56,8 @@ spring:
         - Path=/delay/{segment}
         uri: http://httpbin.org:80
       - id: web-authentication
-        uri: http://webAuthentication:${SERVER_PORT_WEB_AUTHE}
+        #uri: http://webAuthentication:${SERVER_PORT_WEB_AUTHE}
+        uri: http://webAuthentication
         filters:
          - AddRequestParameter=tsec, XXXWWWYYY
          - AddResponseHeader=postFilter, spring_gateway
@@ -51,7 +65,8 @@ spring:
         predicates:
         - Path=/authetication/v0/**
       - id: managment
-        uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}
+        #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}
+        uri: http://webTaxcoApp
         filters:
          - AddResponseHeader=spring-gateway, gateway
         predicates:
