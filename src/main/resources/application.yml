@@ -6,12 +6,13 @@ app:
   pathWebTaxco: http://localhost:8090/
 eureka:
   client:
-    service-url:
-      default-zone: http://webTaxcoEureka:8761/eureka
+    serviceUrl:
+      defaultZone: http://webTaxcoEureka:8761/eureka
     healthcheck: 
       enabled: true
 spring:
-  application:    name: webGateway
+  application:
+    name: webGateway
   cloud:
     gateway:
       default-filters:
