@@ -24,32 +24,32 @@ spring:
         - Path=/foo/{segment}
       - id: web-taxco-app
         #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
-        uri: lb://webTaxcoAp
+        uri: lb://webTaxcoApp
         predicates: 
         - Path=/article/v0/*
       - id: web-taxco-app2
         #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
-        uri: lb://webTaxcoAp
+        uri: lb://webTaxcoApp
         predicates: 
         - Path=/bracelet/v0/**
       - id: web-taxco-app3
         #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
-        uri: lb://webTaxcoAp
+        uri: lb://webTaxcoApp
         predicates: 
         - Path=/chain/v0/**
       - id: web-taxco-app3
         #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
-        uri: lb://webTaxcoAp
+        uri: lb://webTaxcoApp
         predicates: 
         - Path=/rings/v0/**
       - id: web-taxco-app3
         #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
-        uri: lb://webTaxcoAp
+        uri: lb://webTaxcoApp
         predicates: 
         - Path=/earring/v0/**
       - id: web-taxco-app4
         #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}/
-        uri: lb://webTaxcoAp
+        uri: lb://webTaxcoApp
         predicates: 
         - Path=/order/v0/**
       - id: otros
@@ -67,7 +67,7 @@ spring:
         - Path=/authetication/v0/**
       - id: managment
         #uri: http://webTaxcoApp:${SERVER_PORT_TAXCO_APP}
-        uri: lb://webTaxcoAp
+        uri: lb://webTaxcoApp
         filters:
          - AddResponseHeader=spring-gateway, gateway
         predicates:
