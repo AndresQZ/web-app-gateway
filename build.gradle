@@ -39,6 +39,6 @@ dependencies {
     }
     testCompile("org.springframework.boot:spring-boot-starter-test")
     compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: 'Greenwich'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client'
 
 }
